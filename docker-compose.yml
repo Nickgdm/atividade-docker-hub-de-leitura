@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+
+  integrado:
+    build:
+      context: ./hub-de-leitura-integrado
+
+    container_name: hub-integrado
+
+    ports:
+      - "3000:3000"
+
+    networks:
+      - hub-network
+
+
+  teste-ui:
+    build:
+      context: ./hub-de-leitura-teste-ui
+
+    container_name: hub-teste-ui
+
+    depends_on:
+      - integrado
+
+    environment:
+      CYPRESS_BASE_URL: http://integrado:3000
+
+    volumes:
+      - ./logs/videos:/e2e/cypress/videos
+      - ./logs/screenshots:/e2e/cypress/screenshots
+
+    command: npm test
+
+    networks:
+      - hub-network
+
+networks:
+  hub-network:
