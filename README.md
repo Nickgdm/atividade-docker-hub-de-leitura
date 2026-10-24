@@ -25,12 +25,12 @@ Projeto de integração do Hub de Leitura com a suíte de testes de UI, usando D
 ```bash
 docker compose up --build
 ```
-4. Consulte os logs dos serviços e confirme que a aplicação está pronta antes de iniciar os testes.
+4. O serviço `teste-ui` está configurado com `command: npm test`, então o Compose inicia os testes de UI após criar o serviço. Acompanhe os logs para conferir o resultado.
 5. Para encerrar:
 ```bash
 docker compose down
 ```
-A forma de disparar os testes depende dos comandos e serviços definidos no Compose; verifique o arquivo antes de executar.
+Os vídeos e screenshots dos testes são mapeados para a pasta local `logs/`, conforme os volumes configurados no `docker-compose.yml`.
 
 ## Estrutura do projeto
 ```text
@@ -54,7 +54,7 @@ Integrar aplicação e suíte de testes, configurar a comunicação entre contai
 A atividade permite praticar Docker Compose para coordenar serviços e preparar um ambiente integrado para automação. Também reforça a importância de conferir a inicialização da aplicação e consultar logs ao investigar falhas.
 
 ## Considerações finais
-A estrutura exata dos serviços e o comando para executar os testes dependem do conteúdo de `docker-compose.yml`. Revise as configurações antes da primeira execução.
+A aplicação e os testes são definidos como serviços no `docker-compose.yml`. Revise as configurações e consulte os logs para confirmar a inicialização da aplicação e o resultado da suíte de testes.
 
 ---
 
